@@ -1,6 +1,6 @@
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(
-  "***REMOVED***"
+  "APIKEY"
 );
 
 const sendmail = (email, name) => {
