@@ -1,16 +1,12 @@
 const mongoose = require("mongoose");
 const productSchema = new mongoose.Schema(
   {
-    category: {
-      type: String,
-      required: true,
-      trim: true
-    },
     subcategory: {
-      type: String,
-      required: true
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "Subcategory"
     },
-    pid: {
+    productname: {
       type: String,
       required: true
     },
@@ -20,9 +16,15 @@ const productSchema = new mongoose.Schema(
     },
 
     price: {
-      type: String,
+      type: Number,
       required: true
     },
+    // rating: {
+    //   type: Number
+    // },
+    // boughtby: {
+    //   type: Number
+    // },
     description: {
       type: String,
       required: true
@@ -33,6 +35,9 @@ const productSchema = new mongoose.Schema(
       modelno: String,
       author: String,
       title: String
+    },
+    tags: {
+      type: String
     }
   },
 
@@ -40,5 +45,7 @@ const productSchema = new mongoose.Schema(
     timestamps: true
   }
 );
+
+productSchema.index({ productname: "text", description: "text" });
 const Product = mongoose.model("Products", productSchema);
 module.exports = Product;
