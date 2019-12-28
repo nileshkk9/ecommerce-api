@@ -4,6 +4,8 @@ const userRouter = require("./routers/user");
 const productRouter = require("./routers/product");
 const addressRouter = require("./routers/address");
 const orderRouter = require("./routers/order");
+const categoryRouter = require("./routers/category");
+const subcategoryRouter = require("./routers/subcategory");
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -12,6 +14,8 @@ app.use(userRouter);
 app.use(productRouter);
 app.use(addressRouter);
 app.use(orderRouter);
+app.use(categoryRouter);
+app.use(subcategoryRouter);
 app.listen(port, () => {
   console.log("server running on port: " + port);
 });
